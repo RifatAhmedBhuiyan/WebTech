@@ -1,0 +1,181 @@
+<!-- ADMIN DASHBOARD -->
+        <div id="adminPanel" class="role-panel" hidden>
+            <section class="panel">
+                <h2>Sales Summary</h2>
+                <div id="adminSummary" class="summary-grid"></div>
+                <div class="form-row">
+                    <div><h3>Best Selling Items</h3><div id="bestSelling"></div></div>
+                    <div><h3>Peak Business Hours</h3><div id="peakHours"></div></div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Menu and Category Management</h2>
+                <form id="categoryForm" class="inline-form">
+                    <div><label for="newCategory">New Category</label><input id="newCategory" required></div>
+                    <button type="submit">Add Category</button>
+                </form>
+                <div id="categoryList"></div>
+                <form id="itemForm" class="sub-form">
+                    <h3>Add Menu Item</h3>
+                    <div class="form-row">
+                        <div><label for="itemName">Item Name</label><input id="itemName" required></div>
+                        <div><label for="itemCategory">Category</label><select id="itemCategory" required></select></div>
+                        <div><label for="itemPrice">Price (Tk)</label><input type="number" id="itemPrice" min="1" required></div>
+                    </div>
+                    <label for="itemDescription">Description</label>
+                    <input id="itemDescription" required>
+                    <label for="itemImage">Photo URL (optional)</label>
+                    <input type="url" id="itemImage" placeholder="https://example.com/food.jpg">
+                    <button type="submit">Add Item</button>
+                    <p id="itemMessage" class="message"></p>
+                </form>
+                <div id="adminMenu"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Staff Management</h2>
+                <form id="staffForm">
+                    <div class="form-row">
+                        <div><label for="staffName">Name</label><input id="staffName" required></div>
+                        <div><label for="staffEmail">Email</label><input type="email" id="staffEmail" required></div>
+                        <div><label for="staffPhone">Phone</label><input id="staffPhone" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div><label for="staffPassword">Password</label><input type="text" id="staffPassword" minlength="6" required></div>
+                        <div><label for="staffRole">Role</label><select id="staffRole"><option value="kitchen">Kitchen Staff</option><option value="rider">Delivery Rider</option></select></div>
+                    </div>
+                    <button type="submit">Create Staff Account</button>
+                    <p id="staffMessage" class="message"></p>
+                </form>
+                <div id="staffList"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Coupons and Offers</h2>
+                <form id="couponForm">
+                    <div class="form-row">
+                        <div><label for="newCouponCode">Coupon Code</label><input id="newCouponCode" required></div>
+                        <div><label for="couponDiscount">Discount (%)</label><input type="number" id="couponDiscount" min="1" max="90" required></div>
+                        <div><label for="couponExpiry">Expiry Date</label><input type="date" id="couponExpiry" required></div>
+                    </div>
+                    <button type="submit">Create Coupon</button>
+                    <p id="couponMessage" class="message"></p>
+                </form>
+                <div id="couponList"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Reservation Requests</h2>
+                <div id="adminReservations"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Assign Rider to Order</h2>
+                <div id="assignOrders"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Cafe Settings</h2>
+                <form id="settingsForm">
+                    <div class="form-row">
+                        <div><label for="openingTime">Opening Time</label><input type="time" id="openingTime" required></div>
+                        <div><label for="closingTime">Closing Time</label><input type="time" id="closingTime" required></div>
+                        <div><label for="deliveryCharge">Delivery Charge (Tk)</label><input type="number" id="deliveryCharge" min="0" required></div>
+                    </div>
+                    <label for="deliveryAreas">Delivery Areas (separate with commas)</label>
+                    <input id="deliveryAreas" required>
+                    <button type="submit">Save Settings</button>
+                    <p id="settingsMessage" class="message"></p>
+                </form>
+            </section>
+        </div>
+
+        <!-- COMMON PROFILE -->
+        <section class="panel profile-panel">
+            <h2>My Profile</h2>
+            <form id="profileForm">
+                <div class="form-row">
+                    <div><label for="profileName">Name</label><input id="profileName" required></div>
+                    <div><label for="profileEmail">Email</label><input id="profileEmail" type="email" disabled></div>
+                    <div><label for="profilePhone">Phone</label><input id="profilePhone"></div>
+                </div>
+                <label for="profilePicture">Profile Picture</label>
+                <input type="file" id="profilePicture" accept="image/*">
+                <img id="profilePreview" class="profile-preview" alt="Profile preview" hidden>
+                <button type="submit">Save Profile</button>
+                <p id="profileMessage" class="message"></p>
+            </form>
+            <form id="passwordForm" class="sub-form">
+                <h3>Change Password</h3>
+                <div class="form-row">
+                    <div><label for="currentPassword">Current Password</label><input type="password" id="currentPassword" required></div>
+                    <div><label for="newPassword">New Password</label><input type="password" id="newPassword" minlength="6" required></div>
+                </div>
+                <button type="submit">Change Password</button>
+                <p id="passwordMessage" class="message"></p>
+            </form>
+            <button type="button" id="deleteAccountButton" class="button-danger" hidden>Delete My Customer Account</button>
+        </section>
+
+        <footer class="footer">Caffinity - Online Cafe Management System</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+//Login Page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caffinity - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <a class="brand" href="index.html">Caffinity</a>
+            <a href="register.html">Create Customer Account</a>
+        </div>
+    </header>
+
+    <main class="login-page container">
+        <section class="login-box">
+            <h1>Welcome to Caffinity</h1>
+            <p class="muted">Online Cafe Management System</p>
+
+            <form id="loginForm">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required placeholder="Enter your email">
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required placeholder="Enter your password">
+
+                <button type="submit">Login</button>
+                <p id="loginMessage" class="message"></p>
+            </form>
+            <button type="button" id="showResetButton" class="text-button">Reset password</button>
+            <form id="resetForm" hidden>
+                <h2>Reset Password</h2>
+                <label for="resetEmail">Account Email</label>
+                <input type="email" id="resetEmail" required>
+                <label for="resetPhone">Phone Number</label>
+                <input type="tel" id="resetPhone" required>
+                <label for="resetNewPassword">New Password</label>
+                <input type="password" id="resetNewPassword" minlength="6" required>
+                <button type="submit">Save New Password</button>
+                <p id="resetMessage" class="message"></p>
+            </form>
+
+            <p class="small-text">New customer? <a href="register.html">Register here</a></p>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
